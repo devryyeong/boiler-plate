@@ -30,6 +30,7 @@ app.post('/register', (req, res) => {
     //req.body안에는 json형태로 회원가입할 때 필요한 정보(client가 보내는)가 들어있음.
     const user= new User(req.body) 
     
+    
     //mongoDB메소드: 정보들이 user모델에 저장됨.
     user.save((err, userInfo) => { //callback function
         if(err) return res.json({ success: false, err}) //실패했을 때
