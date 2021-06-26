@@ -1,6 +1,4 @@
-//Register Route 만들기
-//-> Node SERVER 먼저 실행
-//-> POST MAN으로 Register Route에 Request 보내기
+//Register Route
 const express = require('express')
 const app = express()
 const port = 5000
@@ -22,7 +20,7 @@ mongoose.connect('mongodb+srv://nr:zxcv7226@boilerplate.el1fe.mongodb.net/myFirs
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Hello World! haaa')
 })
 
 //라우트의 endpoint: register
@@ -43,5 +41,5 @@ app.post('/register', (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://localhost:${port}`)
 })
