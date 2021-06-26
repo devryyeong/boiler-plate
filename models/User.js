@@ -41,13 +41,15 @@ userSchema.pre('save', function(next){
     //myPlaintextPassword: 사용자가 입력하는 순수 비밀번호
     //hash: 암호화된 비밀번호
     if(user.isModified('password')){ //다른 데이터가 아닌 비밀번호를 바꿀 때만 비밀번호 암호화
-        bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.genSalt(saltRounds, function(err, salt) { //salt 생성
             bcrypt.hash(user.password, salt, function(err, hash) {
                 if(err) return next(err)
                 user.password = hash
                 next()
             });
         });
+    } else{ //비밀번호가 아닌 다른 정보를 바꿀 때는 그냥 next()
+        next()
     }
 })
 
