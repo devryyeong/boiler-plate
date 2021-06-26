@@ -2,7 +2,8 @@
 const express = require('express')
 const app = express()
 const port = 5000
-const bodyParser = require('body-parser'); 
+const bodyParser = require('body-parser');
+const config = require('./models/User');  
 //User 모델 가져오기
 const {User} = require('./models/User');
 
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://nr:zxcv7226@boilerplate.el1fe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(()=> console.log('MongoDB Connected...'))
 .catch(err=>console.log(err))
