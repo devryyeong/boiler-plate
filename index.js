@@ -6,8 +6,8 @@ const port = 5000
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const config = require('./config/Key');  
-//User 모델 가져오기
-const {User} = require('./models/User');
+const {auth} = require('./middleware/auth');
+const {User} = require('./models/User'); //User 모델 가져오기
 
 //option1: bodyparser가 client로부터 오는 정보를 server에서 분석해서 가져올 수 있게 해주는 역할
 //(application/x-www-form-urlencoded)
@@ -44,8 +44,8 @@ app.post('/register', (req, res) => {
 })
 
 //Log-in
-app.post('/login', (req, res)=>{
-    //요청된 이메일을 데베에서 찾음
+app.post('/api/users/login', (req, res)=>{
+    //요청된 이메일을 데베에서 찾음(findOne: mongoDB에 있는 메소드.)
     User.findOne({ email: req.body.email }, (err, user)=> {
         if(!user){
             return res.json({ 
@@ -73,6 +73,23 @@ app.post('/login', (req, res)=>{
         })
     })
 })
+
+
+//Authentication(미들웨어를 통과함 = Authentication이 true. 인증 통과~!)
+app.get('api/users/auth', auth, (req,res)=>{
+    res.status(200).json({ //Client에게 User 정보 제공(선택적으로)
+        _id: req.user._id,
+        isAdmin: req.user.role === 0 ? false:true, //role=0: 일반유저 / role=1: Admin
+        isAuth: true,
+        email: req.user.email,
+        name: req.user.name,
+        lastname: req.user.lastname,
+        role: req.user.role,
+        image: req.user.image
+    })
+})
+
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
