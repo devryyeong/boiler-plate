@@ -15,9 +15,7 @@ let auth = (req, res, next)=> {
         next(); //미들웨어 위치에서 다음으로 넘어갈 수 있도록
     })
 
-    //3. 유저가 있으면 인증 ok, 
-
-    //4. 유저가 없으면 인증 no
+    //3. 유저가 있으면 인증 ok, 없으면 인증 no
 }
 
 module.exports={auth};
