@@ -47,6 +47,7 @@ app.post('/register', (req, res) => {
     })
 })
 
+
 //Log-in
 app.post('/api/users/login', (req, res)=>{
     //요청된 이메일을 데베에서 찾음(findOne: mongoDB에 있는 메소드.)
