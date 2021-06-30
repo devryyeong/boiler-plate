@@ -5,7 +5,7 @@ const port = 5000
 //즉, body-parser를 이용해 req.body로 client가 보내는 정보를 받을 수 있음.
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
-const config = require('./Server/config/Key');  
+const config = require('./config/key');  
 const {auth} = require('./middleware/auth');
 const {User} = require('./models/User'); //User 모델 가져오기
 
@@ -25,6 +25,10 @@ mongoose.connect(config.mongoURI, { //dev.js의 mongoURI
 
 app.get('/', (req, res) => {
     res.send('Hello World! haaa')
+})
+
+app.get('/api/hello', (req, res)=> {
+    res.send("proxy server 설정")
 })
 
 //라우트의 endpoint: register
