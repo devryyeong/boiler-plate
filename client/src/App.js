@@ -15,7 +15,6 @@ function App() {
   return (
     <Router>
       <div>
-
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={LoginPage} />
