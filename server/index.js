@@ -32,7 +32,7 @@ app.get('/api/hello', (req, res)=> {
 })
 
 //라우트의 endpoint: register
-app.post('/register', (req, res) => {
+app.post('/api/users/register', (req, res) => {
     //인스턴스 만들고 정보들을 DB에 넣기.
     //req.body안에는 json형태로 회원가입할 때 필요한 정보(client가 보내는)가 들어있음.
     const user= new User(req.body) 

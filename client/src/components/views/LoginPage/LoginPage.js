@@ -28,7 +28,7 @@ function LoginPage(props) {
         dispatch(loginUser(body))
             .then(response => {
                 if (response.payload.loginSuccess) {
-                    props.history.push('/')
+                    props.history.push('/') //로그인 성공시 시작페이지로 이동
                 } else {
                     alert('Error')
                 }
