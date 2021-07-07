@@ -81,7 +81,7 @@ app.post('/api/users/login', (req, res)=>{
 
 
 //Authentication(미들웨어를 통과함 = Authentication이 true. 인증 통과~!)
-app.get('api/users/auth', auth, (req, res)=>{
+app.get('/api/users/auth', auth, (req, res)=>{
     res.status(200).json({ //Client에게 User 정보 제공(선택적으로)
         _id: req.user._id,
         isAdmin: req.user.role === 0 ? false:true, //role=0: 일반유저 / role=1: Admin
