@@ -1,6 +1,8 @@
 # boiler-plate
 
-React, Node.js & Express.js
+* React  
+* Node.js & Express.js  
+* MongoDB
 
 # dependencies && devDependencies
 <pre><code>
